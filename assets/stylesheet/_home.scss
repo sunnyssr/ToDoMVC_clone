@@ -1,0 +1,9 @@
+.header {
+  h1.site-heading{
+    font-family: $secondaryFontFamily;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba($color: #cc0000, $alpha: 0.25);
+    line-height: 1.5;
+  }
+}
