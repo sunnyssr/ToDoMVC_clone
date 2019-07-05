@@ -1,3 +1,7 @@
+ul {
+  margin: 0;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -338,18 +342,210 @@ template {
 }
 
 body {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: minmax(300px, 600px);
+}
+
+.add-todo {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+}
+
+.todo {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+}
+
+body {
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   line-height: 1.5;
   background: #f5f5f5;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .header h1.site-heading {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
-  color: rgba(204, 0, 0, 0.6);
-  line-height: 1.5;
+  color: rgba(204, 0, 0, 0.25);
+  line-height: 1.2;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.todo-app {
+  display: grid;
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+  background: #fff;
+}
+.todo-app .add-todo .new-todo {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  line-height: 2rem;
+}
+.todo-app .add-todo .new-todo::placeholder {
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: rgba(165, 161, 161, 0.534);
+}
+.todo-app .add-todo .check-all {
+  color: rgba(165, 161, 161, 0.534);
+  padding: 1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+.todo-app .add-todo .check-all-todo:checked + .check-all {
+  color: #444444;
+}
+.todo-app .add-todo .check-all-todo {
+  display: none;
+}
+.todo-app .add-todo .check-all.hidden .fas {
+  display: none;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-list .todo {
+  position: relative;
+}
+.todo-list .todo .check-container {
+  padding: 1rem 0.5rem;
+  display: block;
+  height: 4rem;
+}
+.todo-list .todo .check-container .todo-status {
+  display: none;
+}
+.todo-list .todo .check-container .checkbox-status {
+  display: inline-block;
+  height: 2rem;
+  overflow: hidden;
+  width: 2rem;
+  line-height: 1.8rem;
+  text-align: center;
+  border: 0.1rem solid grey;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+.todo-list .todo .check-container .checkbox-status > i {
+  display: none;
+}
+.todo-list .todo .check-container .todo-status:checked + .checkbox-status > i {
+  display: inline;
+}
+.todo-list .todo .todo-name {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  padding: 1rem;
+  letter-spacing: 0.05rem;
+}
+.todo-list .todo .delete {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.75rem;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+  background: transparent;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+  color: #cc0000;
+}
+.todo-list .todo .input-edit {
+  display: none;
+  border: 0.05rem solid gray;
+  box-shadow: inset 0 0 0.5rem 0 grey;
+  outline: 0;
+  padding: 0.95rem;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+}
+
+.todo.editing .check-container {
+  opacity: 0;
+}
+.todo.editing .delete {
+  display: none;
+}
+.todo.editing .todo-name {
+  display: none;
+}
+.todo.editing .input-edit {
+  display: block;
+}
+
+.todo.completed label {
+  font-family: "Roboto Condensed", sans-serif;
+  text-decoration: line-through;
+  font-weight: 300;
+  font-style: italic;
+}
+.todo.completed .todo-name {
+  color: lightgray;
+}
+
+.todo-setting {
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+}
+.todo-setting .todo-left-count {
+  color: #444444;
+}
+.todo-setting .filters .filter {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border: 0.05rem solid transparent;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+.todo-setting .filters input[type=radio] {
+  display: none;
+}
+.todo-setting .filters .filter:hover {
+  border: 0.05rem solid rgba(204, 0, 0, 0.1);
+}
+.todo-setting .filters #filter-all:checked + .filter-all-label {
+  border: 0.05rem solid rgba(204, 0, 0, 0.25);
+}
+.todo-setting .filters #filter-active:checked + .filter-active-label {
+  border: 0.05rem solid rgba(204, 0, 0, 0.25);
+}
+.todo-setting .filters #filter-completed:checked + .filter-completed-label {
+  border: 0.05rem solid rgba(204, 0, 0, 0.25);
+}
+.todo-setting .clear-completed {
+  cursor: pointer;
+  color: #444444;
+}
+.todo-setting .clear-completed:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=main.css.map */

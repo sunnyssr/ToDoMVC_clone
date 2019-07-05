@@ -7,6 +7,8 @@
     <title>ToDoApp</title>
     <!-- Font Family CSS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
     <!-- Custom CSS -->
     <link href="assets/stylesheet/main.css" rel="stylesheet">
   </head>
@@ -14,5 +16,44 @@
     <header class="header">
       <h1 class="site-heading">ToDo App</h1>
     </header>
+    <main class="todo-app">
+      <section class="add-todo">
+        <input type="checkbox" id="check-all-todo" class="check-all-todo">
+        <label for="check-all-todo" class="check-all"><i class="fas fa-angle-down"></i></label>
+        <input class="new-todo" placeholder="What needs to be done?">
+      </section>
+      <section class="todo-container">
+        <ul class="todo-list">
+          <li data-id="1">
+            <div class="todo">
+              <label class="check-container">
+                <input class="todo-status" type="checkbox">
+                <span class="checkbox-status"><i class="fas fa-check"></i></span>
+              </label>
+              <label class="todo-name">Something</label>
+              <button class="delete"><i class="fas fa-times"></i></button>
+              <input class="input-edit" type="input">
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section class="todo-setting">
+        <span class="todo-left-count">
+          <strong>1</strong>
+          <span>items left</span>
+        </span>
+        <div class="filters">
+          <input type="radio" id="filter-all" name="filter-todo" value="all" checked>
+          <label for="filter-all" class="filter filter-all-label">All</label>
+          <input type="radio" id="filter-active" name="filter-todo" value="active">          
+          <label for="filter-active" class="filter filter-active-label">Active</label>
+          <input type="radio" id="filter-completed" name="filter-todo" value="completed">
+          <label for="filter-completed" class="filter filter-completed-label">Completed</label>
+        </div>
+        <a class="clear-completed">Clear completed</a>
+      </section>
+    </main>
+
+    <script src="./assets/script/script.js"></script>
   </body>
 </html>

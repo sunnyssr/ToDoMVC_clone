@@ -4,6 +4,201 @@
     font-size: 5rem;
     font-weight: 700;
     color: rgba($color: #cc0000, $alpha: 0.25);
-    line-height: 1.5;
+    line-height: 1.2;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+.todo-app {
+  display: grid;
+  width: 100%;
+  max-width: 600px;
+  min-width: 300px;
+  background: #fff;
+
+  .add-todo {
+  
+    .new-todo {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      outline: 0;
+      border: 0;
+      line-height: 2rem;
+
+      &::placeholder {
+        font-style: italic;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: rgba(165, 161, 161, 0.534);
+      }
+    }
+
+    .check-all{
+      color: rgba(165, 161, 161, 0.534);
+      padding: 1rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      text-align: center;
+    }
+  
+    .check-all-todo:checked + .check-all {
+      color: #444444;
+    }
+
+    .check-all-todo {
+      display: none;
+    }
+    .check-all.hidden .fas{
+      display: none;
+    }
+  }
+}
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .todo{
+    // border-top: 0.001rem solid grey;
+    position: relative;
+
+    .check-container {
+      padding: 1rem 0.5rem;
+      display: block;
+      height: 4rem;
+
+      .todo-status {
+        display: none;
+      }
+      .checkbox-status {
+        display: inline-block;
+        height: 2rem;
+        overflow: hidden;
+        width: 2rem;
+        line-height: 1.8rem;
+        text-align: center;
+        border: 0.1rem solid grey;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+      }
+      .checkbox-status > i {
+        display: none;
+      }
+      .todo-status:checked + .checkbox-status > i{
+        display: inline;
+      }
+    }
+
+    .todo-name {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      padding: 1rem;
+      letter-spacing: 0.05rem;
+    }
+
+    .delete{
+      position: absolute;
+      right: 0.5rem;
+      top: 0.75rem;
+      padding: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0;
+      background: transparent;
+      border: none;
+      outline: 0;
+      box-shadow: none;
+      color: #cc0000;
+    }
+    .input-edit {
+      display: none;
+      border: 0.05rem solid gray;
+      box-shadow: inset 0 0 0.5rem 0 grey;
+      outline: 0;
+      padding: 0.95rem;
+      line-height: 2rem;
+      font-size: 1.5rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+}
+.todo.editing {
+
+  .check-container {
+    opacity: 0;
+  }
+  .delete {
+    display: none;
+  }
+  .todo-name {
+    display: none;
+  }
+  .input-edit {
+    display: block;
+  }
+
+}
+
+.todo.completed {
+  label {
+    font-family: $secondaryFontFamily;
+    text-decoration: line-through;
+    font-weight: 300;
+    font-style: italic;
+
+  }
+  .todo-name {
+    color: lightgray;
+  }
+}
+
+// ToDo Settings
+
+.todo-setting {
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+
+  .todo-left-count {
+    color: #444444;
+  }
+  .filters {
+    .filter {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border:0.05rem solid transparent;
+      font-size: 0.9rem;
+      border-radius: 0.25rem;
+      -webkit-border-radius: 0.25rem;
+      -moz-border-radius: 0.25rem;
+      -ms-border-radius: 0.25rem;
+      -o-border-radius: 0.25rem;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    .filter:hover {
+      border:0.05rem solid rgba($color:#cc0000,$alpha: 0.1);
+    }
+    #filter-all:checked + .filter-all-label {
+      border:0.05rem solid rgba($color:#cc0000,$alpha: 0.25);
+    }
+    #filter-active:checked + .filter-active-label {
+      border:0.05rem solid rgba($color:#cc0000,$alpha: 0.25);
+    }
+    #filter-completed:checked + .filter-completed-label {
+      border:0.05rem solid rgba($color:#cc0000,$alpha: 0.25);
+    }
+  }
+  .clear-completed {
+    cursor: pointer;
+    color: #444444;
+  }
+  .clear-completed:hover {
+    text-decoration: underline;
   }
 }
